@@ -1,0 +1,22 @@
+<h1> My Multimedia Webapp</h1>
+<h2><a href="{% url 'upload_video' %}">Video</a></h2>
+{% for video in videos %}
+    <video width="320" height="240" controls>
+        <source src="{{video.video_file.url }}" type="video/mp4">
+    </video>
+    <p>{{ video.title }} - {{ video.description }}</p>
+{% endfor %}
+
+<h2><a href="{% url 'upload_audio' %}">Audio</a></h2>
+{% for audio in audios %}
+    <audio controls>
+        <source src="{{audio.audio_file.url}}" type="audio/mpeg">
+    </audio>
+    <p>{{audio.title}}</p>
+{% endfor %}
+
+<h2><a href="{% url 'upload_image' %}">Image</a></h2>
+{% for image in images %}
+    <img src="{{image.image_file.url}}" alt="{{image.title}}" width="320">
+    <p>{{image.title}}</p>
+{% endfor %}
